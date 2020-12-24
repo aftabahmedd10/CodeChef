@@ -1,0 +1,53 @@
+/* package codechef; // don't place package name! */
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+/* Name of the class has to be "Main" only if the class is public. */
+class Codechef
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		Scanner sc = new Scanner(System.in);
+		int d1 = sc.nextInt();
+		int v1 = sc.nextInt();
+		int d2 = sc.nextInt();
+		int v2 = sc.nextInt();
+		int p  = sc.nextInt();
+		int vaccines, days, pdayVacc,rem;
+		if(d1 == d2){
+		    days = d1-1;
+		    pdayVacc = v1+v2;
+		    days += (p-1)/pdayVacc +1;
+		    System.out.println(days);
+		}
+		else{
+		    days = ((d1<d2)?d1:d2) - 1;
+		    if(d1 < d2){
+		        days += (d2-d1);
+		        vaccines = (d2-d1)*v1;
+		    }
+		    else{
+		        days += (d1-d2);
+		        vaccines = (d1-d2)*v2;
+		    }
+		    if(vaccines >= p){
+		        days = ((d1<d2)?d1:d2) - 1;
+		        if(d1 < d2){          
+		            days += (p-1)/v1 + 1;
+		            System.out.println(days);
+		        }
+		        else{		            
+		            days += (p-1)/v2 + 1;
+		            System.out.println(days);
+		        }
+		    }
+		    else{
+    		    pdayVacc = v1+v2;
+    		    days += (p-vaccines-1)/pdayVacc +1;
+    		    System.out.println(days);
+		    }
+		}
+	}
+}
