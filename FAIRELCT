@@ -1,0 +1,38 @@
+def canAwin(A,B,n,m):
+    i=0
+    j=m-1
+    count=0
+    Asum = 0
+    Bsum = 0
+    for x in A:
+        Asum += x
+    for x in B:
+        Bsum += x
+    A.sort()
+    B.sort()
+    if(Bsum >= Asum):
+        while((Bsum >= Asum) and i<n and j>=0):
+            
+            Asum = Asum - A[i] + B[j]
+            Bsum = Bsum - B[j] + A[i]
+            i += 1
+            j -= 1
+            count += 1
+            if(Asum > Bsum):
+                return count
+            
+        if(Asum <= Bsum):
+            return -1
+    else:
+        return count
+    
+    
+    
+t = int(input())
+while(t>0):
+    t-=1
+    n,m = map(int, input().split())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    ans = canAwin(A,B,n,m)
+    print(ans)
