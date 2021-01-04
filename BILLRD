@@ -1,0 +1,69 @@
+/* package codechef; // don't place package name! */
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+/* Name of the class has to be "Main" only if the class is public. */
+class Codechef
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+	    Scanner sc = new Scanner(System.in);
+	    int t = sc.nextInt();
+	    while(t-- >0){
+	        int n = sc.nextInt();
+	        int k = sc.nextInt();
+	        int x = sc.nextInt();
+	        int y = sc.nextInt();
+	        int ansx=0,ansy=0;
+	        if(x==y){
+	            ansx = n;
+	            ansy = n;
+	        }
+	        else{
+	            if(x>y){
+	                int r = n-x;
+	                int ch = k%4;
+	                if(ch == 1){
+	                    ansx = r+x;
+	                    ansy = r+y;
+	                }
+	                else if(ch == 2){
+	                    ansx = r+y;
+	                    ansy = r+x;
+	                }
+	                else if(ch==3){
+	                    ansx = 0;
+	                    ansy = n-(r+y);
+	                }
+	                else{
+	                    ansx = n-(r+y);
+	                    ansy = 0;
+	                }
+	            }
+	            else{
+	                int r = n-y;
+	                int ch = k%4;
+	                if(ch == 1){
+	                    ansx = r+x;
+	                    ansy = r+y;
+	                }
+	                else if(ch == 2){
+	                    ansx = r+y;
+	                    ansy = r+x;
+	                }
+	                else if(ch==3){
+	                    ansx = n-(r+x);
+	                    ansy = 0;
+	                }
+	                else{
+	                    ansx = 0;
+	                    ansy = n-(r+x);
+	                }
+	            }
+	        }
+	        System.out.println(ansx+" "+ansy);
+	    }
+	}
+}
